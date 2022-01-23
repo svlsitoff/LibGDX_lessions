@@ -13,7 +13,7 @@ public class GameObject {
         objects = new Sprite(texture);
         bounds = new Rectangle(x,y,width,height);
     }
-    void  draw(SpriteBatch batch){
+    public void  draw(SpriteBatch batch){
         objects.setBounds(bounds.getX(), bounds.getY(),bounds.getWidth(),bounds.getHeight());
         objects.draw(batch);
     }

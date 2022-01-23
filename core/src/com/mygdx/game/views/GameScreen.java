@@ -9,7 +9,7 @@ import com.mygdx.game.models.FPick;
 
 public class GameScreen implements Screen {
     private Texture carTexture;
-    private FPick car;
+    private FPick fPick;
     private SpriteBatch spriteBatch;
     private float posx =0f;
     boolean flag = true;
@@ -18,6 +18,7 @@ public class GameScreen implements Screen {
 
         spriteBatch = new SpriteBatch();
         carTexture = new Texture(Gdx.files.internal("fuck.png"));
+        fPick = new FPick(carTexture,0,0,63,62);
     }
 
     @Override
@@ -38,7 +39,7 @@ public class GameScreen implements Screen {
         Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         spriteBatch.begin();
-        spriteBatch.draw(carTexture,posx,0);
+        fPick.draw(spriteBatch);
         spriteBatch.end();
     }
 
