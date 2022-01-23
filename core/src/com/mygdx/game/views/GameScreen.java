@@ -5,9 +5,11 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.models.FPick;
 
 public class GameScreen implements Screen {
-    private Texture texture;
+    private Texture carTexture;
+    private FPick car;
     private SpriteBatch spriteBatch;
     private float posx =0f;
     boolean flag = true;
@@ -15,7 +17,7 @@ public class GameScreen implements Screen {
     public void show() {
 
         spriteBatch = new SpriteBatch();
-        texture = new Texture(Gdx.files.internal("car.png"));
+        carTexture = new Texture(Gdx.files.internal("fuck.png"));
     }
 
     @Override
@@ -36,7 +38,7 @@ public class GameScreen implements Screen {
         Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         spriteBatch.begin();
-        spriteBatch.draw(texture,posx,0);
+        spriteBatch.draw(carTexture,posx,0);
         spriteBatch.end();
     }
 
@@ -64,6 +66,6 @@ public class GameScreen implements Screen {
     public void dispose() {
 
         spriteBatch.dispose();
-        texture.dispose();
+        carTexture.dispose();
     }
 }
