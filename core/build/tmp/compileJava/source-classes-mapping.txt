@@ -1,0 +1,4 @@
+com/mygdx/game/views/GameScreen.java
+ com.mygdx.game.views.GameScreen
+com/mygdx/game/Main.java
+ com.mygdx.game.Main
