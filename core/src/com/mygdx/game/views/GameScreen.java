@@ -3,6 +3,7 @@ package com.mygdx.game.views;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.models.FPick;
@@ -10,15 +11,16 @@ import com.mygdx.game.models.FPick;
 public class GameScreen implements Screen {
     private Texture carTexture;
     private FPick fPick;
-    private SpriteBatch spriteBatch;
+    private SpriteBatch batch;
+    OrthographicCamera camera;
     private float posx =0f;
     boolean flag = true;
     @Override
     public void show() {
 
-        spriteBatch = new SpriteBatch();
+        batch = new SpriteBatch();
         carTexture = new Texture(Gdx.files.internal("fuck.png"));
-        fPick = new FPick(carTexture,0,0,63,62);
+        fPick = new FPick(carTexture,0,0,4f,4f);
     }
 
     @Override
@@ -38,14 +40,17 @@ public class GameScreen implements Screen {
         }
         Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        spriteBatch.begin();
-        fPick.draw(spriteBatch);
-        spriteBatch.end();
+        batch.setProjectionMatrix(camera.combined);
+        batch.begin();
+        fPick.draw(batch);
+        batch.end();
     }
 
     @Override
     public void resize(int width, int height) {
 
+        float aspectRatio = (float) height/width;
+        camera = new OrthographicCamera(20f,20f*aspectRatio);
     }
 
     @Override
@@ -66,7 +71,7 @@ public class GameScreen implements Screen {
     @Override
     public void dispose() {
 
-        spriteBatch.dispose();
+        batch.dispose();
         carTexture.dispose();
     }
 }
